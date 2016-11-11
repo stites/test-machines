@@ -1,13 +1,13 @@
 ---------------------------------------------------------------------------------
 -- |
--- Module    :   Test.Machines
+-- Module    :  Test.Machines
 -- Copyright :  (c) Sam Stites 2016
 -- License   :  MIT
 -- Maintainer:  sam@stites.io
 -- Stability :  experimental
 -- Portability: non-portable
 --
--- A small library to stochastically generate json according to given rules.
+-- A small library to stochastically generate events according to given rules.
 ---------------------------------------------------------------------------------
 {-# LANGUAGE Arrows #-}
 {-# LANGUAGE ScopedTypeVariables #-}
@@ -34,10 +34,6 @@ class SeriesGenerating s where
 
   st2T :: s -> Text
   ts2T :: Proxy s -> Symbol s -> Text
-
-class SeriesGenerating s => WithExpected s where
-  type Expect (Symbol s)
-  expected :: Proxy s -> Symbol s -> Expect (Symbol s)
 
 
 writeSeries :: forall s . (SeriesGenerating s) => Proxy s -> Text -> [Char] -> Integer -> IO ()
@@ -99,7 +95,7 @@ getTransition = stateful step
         cdf = scanl1 merge . distribution
 
         merge :: Num n => (n, a) -> (n, a) -> (n, a)
-        merge (p0, _) (p1, s) = (p0 + p1, s)
+        merge (p0, _) (p1, s') = (p0 + p1, s')
 
 
 getProb :: Monad m => StdGen -> MealyT m () Float
