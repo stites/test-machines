@@ -141,3 +141,8 @@ flycheck_*.el
 
 # projectiles files
 .projectile
+
+# ignore generated files
+*_stateseq
+*_timeseq
+
