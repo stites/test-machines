@@ -1,0 +1,37 @@
+name:        meals
+version:     0.0.0.1
+synopsis:    Initial project template
+description: Please see README.md
+category:    Uncategorized
+author:      Sam Stites
+maintainer:  sam@stites.io
+github:      stites/test-machines/meals
+license:     AllRightsReserved
+copyright:   2017
+
+ghc-options: -Werror -threaded -rtsopts -with-rtsopts=-N
+
+default-extensions:
+  - NoImplicitPrelude
+  - MultiParamTypeClasses
+  - NoImplicitPrelude
+  - OverloadedStrings
+  - PatternSynonyms
+  - TypeFamilies
+
+dependencies:
+  - base
+
+library:
+  source-dirs: src
+
+# tests:
+#   spec:
+#     source-dirs: test
+#     main: Spec.hs
+#     dependencies:
+#       - hspec
+#       - QuickCheck
+#       - meals
+
+
