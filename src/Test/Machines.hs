@@ -16,13 +16,13 @@ module Test.Machines where
 import Control.Arrow (arr)
 import Control.Exception (bracket)
 import Data.Monoid ((<>))
-import Data.Text (Text)
 import Data.Proxy
-import System.Random
+import Data.Text (Text)
 import System.IO
+import System.Random
 import qualified Data.Text.IO as TIO
-import Prelude hiding ((.))
 
+import Prelude hiding ((.))
 import Control.Mealy
 
 class SeriesGenerating s where
@@ -36,12 +36,13 @@ class SeriesGenerating s where
   ts2T :: Proxy s -> Symbol s -> Text
 
 
-writeSeries :: forall s . (SeriesGenerating s) => Proxy s -> Text -> [Char] -> Integer -> IO ()
+writeSeries :: forall s . (SeriesGenerating s) => Proxy s -> Text -> FilePath -> Integer -> IO ()
 writeSeries _ delim filename iters =
-  bracket openTimeseq hClose (\ts ->
-    bracket openStateseq hClose (\st ->
-      buildFiles ts st))
+  bracket openTimeseq hClose nestedBracket
   where
+    nestedBracket :: Handle -> IO ()
+    nestedBracket ts = bracket openStateseq hClose (buildFiles ts)
+
     openTimeseq :: IO Handle
     openTimeseq = openFile (filename ++ "_timeseq") WriteMode
 
