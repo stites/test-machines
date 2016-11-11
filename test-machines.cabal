@@ -16,10 +16,12 @@ library
   build-depends:
       base
     , meals
+    , optparse-applicative
     , random
     , text
   exposed-modules:
       Test.Machines
+      Test.Machines.Api
   default-language: Haskell2010
 
 executable even-process
@@ -31,10 +33,10 @@ executable even-process
   build-depends:
       base
     , meals
+    , optparse-applicative
     , random
     , text
     , test-machines
-    , optparse-applicative
   other-modules:
       EvenProcess
   default-language: Haskell2010
@@ -49,6 +51,7 @@ test-suite doctest
   build-depends:
       base
     , meals
+    , optparse-applicative
     , random
     , text
     , test-machines
@@ -67,6 +70,7 @@ test-suite spec
   build-depends:
       base
     , meals
+    , optparse-applicative
     , random
     , text
     , test-machines

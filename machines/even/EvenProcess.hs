@@ -5,6 +5,7 @@ import Data.Text (Text)
 import Control.Exception
 import qualified Data.Text as T
 
+import Prelude
 import Test.Machines
 
 data EvenProcess = A | B
