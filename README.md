@@ -1,2 +1,2 @@
-# test-machines
-time series generators for simple state machines
+## test-machines}
+[![Build Status](https://travis-ci.org/stites/test-machines.svg?branch=master)](https://travis-ci.org/stites/test-machines)
