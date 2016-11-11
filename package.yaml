@@ -12,6 +12,8 @@ default-extensions:
 dependencies:
   - base
   - meals
+  - random
+  - text
 
 library:
   source-dirs: src

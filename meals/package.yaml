@@ -7,7 +7,7 @@ author:      Sam Stites
 maintainer:  sam@stites.io
 github:      stites/test-machines/meals
 license:     AllRightsReserved
-copyright:   2017
+copyright:   (c) Sam Stites 2017
 
 ghc-options: -Werror -threaded -rtsopts -with-rtsopts=-N
 
