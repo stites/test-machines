@@ -19,15 +19,13 @@
 --  + To be used in conjunction with CSSR
 --
 ---------------------------------------------------------------------------------
-module EvenProcess where
-
-import Data.Proxy
-import Data.Text (Text)
-import Control.Exception
-import qualified Data.Text as T
+module Test.Machines.EvenProcess where
 
 import Prelude
+import Data.Proxy
+
 import Test.Machines
+import Test.Machines.Internal
 
 data EvenProcess = A | B
   deriving (Eq, Ord, Show)
@@ -36,22 +34,16 @@ evenProxy :: Proxy EvenProcess
 evenProxy = Proxy
 
 instance SeriesGenerating EvenProcess where
-  type Symbol EvenProcess = Text
+  type Symbol EvenProcess = BinaryOutput
   initial = A
 
-  move A "0" = A
-  move A "1" = B
-  move B "0" = A
-  move B "1" = B
-  move _ _ = throw $
-    PatternMatchFail "illegal match - check your state machine definition"
+  move A Z = A
+  move A O = B
+  move B Z = A
+  move B O = B
 
-
-  distribution A = [ (0.5, "0"), (0.5, "1") ]
-  distribution B = [ (1.0, "0"), (0.0, "1") ]
-
-  st2T = T.pack . show
-  ts2T _ = id
+  distribution A = [ (0.5, Z), (0.5, O) ]
+  distribution B = [ (1.0, Z), (0.0, O) ]
 
 
 

@@ -1,11 +1,12 @@
 module Main where
 
 import qualified Data.Text as T
+import Data.Monoid ((<>))
 import Options.Applicative
 import Prelude
 
-import EvenProcess
 import Test.Machines
+import Test.Machines.EvenProcess
 
 data Api = Api
   { count :: Integer

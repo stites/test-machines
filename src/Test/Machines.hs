@@ -11,6 +11,7 @@
 ---------------------------------------------------------------------------------
 {-# LANGUAGE Arrows #-}
 {-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE FlexibleContexts #-}
 module Test.Machines where
 
 import Control.Arrow (arr)
@@ -21,22 +22,25 @@ import Data.Text (Text)
 import System.IO
 import System.Random
 import qualified Data.Text.IO as TIO
+import qualified Data.Text as T
 
 import Prelude hiding ((.))
 import Control.Mealy
 
-class SeriesGenerating s where
+class Show s => SeriesGenerating s where
   type Symbol s
 
   move :: s -> Symbol s -> s
   initial :: s
   distribution :: s -> [(Float, Symbol s)]
 
-  st2T :: s -> Text
-  ts2T :: Proxy s -> Symbol s -> Text
+st2T :: (SeriesGenerating s, Show s) => s -> Text
+st2T   = T.pack . show
 
+ts2T :: (SeriesGenerating s, Show (Symbol s)) => Proxy s -> Symbol s -> Text
+ts2T _ = T.pack . show
 
-writeSeries :: forall s . (SeriesGenerating s) => Proxy s -> Text -> FilePath -> Integer -> IO ()
+writeSeries :: forall s . (Show (Symbol s), SeriesGenerating s) => Proxy s -> Text -> FilePath -> Integer -> IO ()
 writeSeries _ delim filename iters =
   bracket openTimeseq hClose nestedBracket
   where
@@ -58,11 +62,11 @@ writeSeries _ delim filename iters =
 -- Mealy machines
 -------------------------------------------------------------------------------
 
-seriesMealy :: forall a s . SeriesGenerating s
+seriesMealy :: forall a s .(Show (Symbol s), SeriesGenerating s)
             => StdGen -> Handle -> Handle -> Text -> s -> MealyT IO a (Symbol s, s)
 seriesMealy seed timeseq stateseq delim start = proc _ -> do
   (sym, state) <- meals -< ()
-  _ <- writeShowable timeseq -< (ts2T (Proxy :: Proxy s) sym <> delim)
+  _ <- writeShowable timeseq  -< (ts2T (Proxy :: Proxy s) sym <> delim)
   _ <- writeShowable stateseq -< (st2T state <> delim)
   arr id -< (sym, state)
   where

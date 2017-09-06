@@ -9,8 +9,11 @@ default-extensions:
 
 dependencies:
   - base
+  - graphviz
   - meals
+  - random
   - optparse-applicative
+  - pipes
   - random
   - text
 
@@ -24,17 +27,17 @@ executables:
     dependencies:
       - test-machines
 
-tests:
-  doctest:
-    main: DocTest.hs
-    source-dirs: test
-    dependencies:
-      - test-machines
-      - doctest
-
-  spec:
-    main: Spec.hs
-    source-dirs: test
-    dependencies:
-      - test-machines
-      - hspec
+#tests:
+#  doctest:
+#    main: DocTest.hs
+#    source-dirs: test
+#    dependencies:
+#      - test-machines
+#      - doctest
+#
+#   spec:
+#     main: Spec.hs
+#     source-dirs: test
+#     dependencies:
+#       - test-machines
+#       - hspec

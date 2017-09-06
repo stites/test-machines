@@ -1,4 +1,4 @@
--- This file has been generated from package.yaml by hpack version 0.14.0.
+-- This file has been generated from package.yaml by hpack version 0.18.1.
 --
 -- see: https://github.com/sol/hpack
 
@@ -15,13 +15,21 @@ library
   ghc-options: -Wall
   build-depends:
       base
+    , graphviz
     , meals
+    , random
     , optparse-applicative
+    , pipes
     , random
     , text
   exposed-modules:
       Test.Machines
-      Test.Machines.Api
+      Test.Machines.AllSameSymbol
+      Test.Machines.AlternatingBiasedCoins
+      Test.Machines.EvenProcess
+      Test.Machines.Utils.Dotfile
+  other-modules:
+      Paths_test_machines
   default-language: Haskell2010
 
 executable even-process
@@ -32,49 +40,12 @@ executable even-process
   ghc-options: -Wall
   build-depends:
       base
+    , graphviz
     , meals
+    , random
     , optparse-applicative
+    , pipes
     , random
     , text
     , test-machines
-  other-modules:
-      EvenProcess
-  default-language: Haskell2010
-
-test-suite doctest
-  type: exitcode-stdio-1.0
-  main-is: DocTest.hs
-  hs-source-dirs:
-      test
-  default-extensions: OverloadedStrings TypeFamilies
-  ghc-options: -Wall
-  build-depends:
-      base
-    , meals
-    , optparse-applicative
-    , random
-    , text
-    , test-machines
-    , doctest
-  other-modules:
-      Spec
-  default-language: Haskell2010
-
-test-suite spec
-  type: exitcode-stdio-1.0
-  main-is: Spec.hs
-  hs-source-dirs:
-      test
-  default-extensions: OverloadedStrings TypeFamilies
-  ghc-options: -Wall
-  build-depends:
-      base
-    , meals
-    , optparse-applicative
-    , random
-    , text
-    , test-machines
-    , hspec
-  other-modules:
-      DocTest
   default-language: Haskell2010
