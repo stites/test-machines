@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which simulates a simple finite-state machine, with binary
 # output, where the states are strictly periodic, and each state can

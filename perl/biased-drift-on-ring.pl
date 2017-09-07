@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a long data-file simulating a first-order Markov
 # chain, which in turn models drift on a ring with a preferred direction.

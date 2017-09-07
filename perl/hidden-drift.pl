@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a long data-file simulating a hidden Markov model. The
 # underlying Markov chain is drift on a ring with three sites: the three

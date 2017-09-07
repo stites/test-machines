@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a long data-file consisting of a long repetition
 # of the same symbol, unspaced.

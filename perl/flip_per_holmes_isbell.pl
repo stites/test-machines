@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a time series simulating the "flip" transducer
 # of Holmes and Isbell ("Looping Suffix Tree-Based Inference of Partially

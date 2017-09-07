@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a long data-file simulating Foulkes HMM
 # The model is constructed so that each state can be unambiguously identified

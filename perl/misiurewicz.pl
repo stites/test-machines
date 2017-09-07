@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a long data-file simulating the Misiurewicz
 # machine (see JPC, Semantics and Thermodynamics, p. 347)

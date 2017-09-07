@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which simulates alternating between flipping a coin which produces
 # 1 with p = .75 and one with p = 0.25.

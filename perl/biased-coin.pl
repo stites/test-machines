@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/bin/env perl
 
 # Program which produces a long data-file consisting of a IID tosses of
 # a biased coin, bias set by input.
